@@ -1,4 +1,4 @@
-#Git
+# Git
 
 git es una herramienta para la gestion de versiones de archivos. Esto quiere decir que nos facilita el versionado de nuestros archivos, permitiendonos entre otras cosas:
 
@@ -6,7 +6,7 @@ git es una herramienta para la gestion de versiones de archivos. Esto quiere dec
  2. entender cual fue la cadena de modificaciones que le fuimos haciendo a lo largo del tiempo
  3. trabajar en equipo con otros sobre los mismos archivos de manera ordenada
  
-Antes de ponernos a usar git vamos a ver primero otro comando: diff
+Antes de ponernos a usar git vamos a ver primero otro comando: `diff`.
 
 ## diff
 
@@ -154,7 +154,6 @@ git nos va a permitir ir entendiendo las diferencias entre nuestros archivos de 
 Lo primero que vamos a hacer es inicializar un "repositorio" que es el nombre que le da git a una coleccion de archivos:
 
 ```
-
 clinux01@pc1:~/Escritorio$ git init
 Inicializado repositorio Git vacío en /home/clinux01/Escritorio/.git/
 ```
@@ -171,6 +170,7 @@ total 64
 Pero si agregamos la opcion `-a` vamos a poder ver una carpeta oculta llamada `.git`:
 
 ```
+clinux01@pc1:~/Escritorio$ ls -l -a
 total 76
 drwxr-xr-x  6 clinux clinux 4096 may  1 13:38  .
 drwxr-xr-x 97 clinux clinux 4096 may  1 13:22  ..
@@ -422,7 +422,7 @@ La idea principal del repositorio remoto es que va funcionar como la "verdad ult
 
 De la misma forma que habiamos inicializado nuestro repositorio local a traves del comando `git init` en el caso de un repositorio remoto lo vamos a hacer a traves de la interfaz web del servicio que estemos utilizando. 
 
-Esto se hace por unica vez al comienzo del proyecto. A partir de ese momento cada uno de los integrantes del proyecto tiene que acceder al repositorio. Esto se puede hacer de varias maneras, pero nosotros lo vamos a hacer a traves de un `fork` para evitar pisarnos con otros alumnos haciendo las mismas pruebas:
+Esto se hace por unica vez al comienzo del proyecto. A partir de ese momento cada uno de los integrantes del proyecto tiene que acceder al repositorio. Esto se puede hacer de varias maneras, pero nosotros lo vamos a `hacer a traves de un `fork` para evitar pisarnos con otros alumnos haciendo las mismas pruebas:
 
 ```
 ```
@@ -561,8 +561,8 @@ y ahora si ambas carpetas estan sincronizadas con el repositorio remoto.
 
 ## links
 
-git (pagina oficial): https://git-scm.com/
-github + git: https://docs.github.com/en/get-started/using-git/about-git
+- git (pagina oficial): https://git-scm.com/
+- github + git: https://docs.github.com/en/get-started/using-git/about-git
 
 
 
