@@ -407,13 +407,14 @@ Lo primero es que cada uno de los integrantes del proyecto obtenga una copia del
 
 Entonces lo primero que vamos a hacer es clickear en el boton `fork`:
 
-[Imagen]
+![](http://gitub.com/introprog-dc/tallerDeGit/images/git1.png)
+
 
 Para poder realizar esta accion github nos va a pedir que nos logueemos con una cuenta de usuario valida (o que creemos una nueva).
 
 Una vez logueados, confirmamos el nombre que va a tener nuestro fork, y finalmente clickeamos en `create fork`
 
-[Imagen]
+![](http://gitub.com/introprog-dc/tallerDeGit/images/git2.png)
 
 Ahora vemos una copia (fork) del repositorio original. Esta copia es el repositorio que vamos a usar como proyecto.
 
