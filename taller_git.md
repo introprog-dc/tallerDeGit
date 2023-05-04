@@ -140,7 +140,7 @@ Inicializado repositorio Git vacío en /home/clinux01/Escritorio/.git/
 Si listamos el contenido de la carpeta vamos a seguir viendo nuestros archivos:
 
 ```
-clinux01@ASUS:~/Escritorio$ ls -l
+clinux01@pc1:~/Escritorio$ ls -l
 total 64
 -rw-rw-r-- 1 clinux clinux   87 may  1 13:15  presentacion.txt
 -rw-rw-r-- 1 clinux clinux   87 may  1 13:22  presentacion_v1.txt
@@ -420,7 +420,14 @@ Ahora vemos una copia (fork) del repositorio original. Esta copia es el reposito
 Entonces cada uno de los integrantes del grupo debe clonar usando `git clone`. Para esto podemos clickear en el boton que dice `code` y copiar la URL que figura ahi. Como siempre, abrimos una terminal en nuestra computadora y hacemos `git clone`.
 
 NOTA: antes de poder clonar, vamos a generar un token: https://github.com/settings/tokens
+
+![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git4.png?raw=true)
+
+![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git5.png?raw=true)
+
 NOTA: es MUY importante anotar el token en algun lugar seguro (idealmente un password manager) ya que github nos lo va a mostrar 1 sola vez. Si nos olvidamos el token vamos a tener que generar uno nuevo.
+
+![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git6.png?raw=true)
 
 Ahora si, usando nuestro nombre de usuario y nuestro token, vamos a clonar el repositorio:
 
@@ -563,7 +570,7 @@ git push
 En este punto el push va a fallar y git nos va a decir que hay cambios en el repositorio remoto que no tenemos:
 
 ```
-ablo@ASUS:/tmp/repo2/tallerDeGit$ git push
+clinux01@pc1:/tmp/repo2/tallerDeGit$ git push
 To https://github.com/miNombreDeUsuario/tallerDeGit
  ! [rejected]        main -> main (fetch first)
 error: failed to push some refs to 'https://github.com/miNombreDeUsuario/tallerDeGit'
@@ -583,7 +590,7 @@ remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), 307 bytes | 307.00 KiB/s, done.
-From https://github.com/pablorubinstein/tallerDeGit
+From https://github.com/miNombreDeUsuario/tallerDeGit
    721f61f..1ec3bed  main       -> origin/main
 hint: You have divergent branches and need to specify how to reconcile them.
 hint: You can do so by running one of the following commands sometime before
