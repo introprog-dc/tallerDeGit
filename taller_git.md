@@ -1,18 +1,18 @@
-# Git
+# git
 
 git es una herramienta para la gestion de versiones de archivos. Esto quiere decir que nos facilita el versionado de nuestros archivos, permitiendonos entre otras cosas:
 
  1. entender cual es la ultima version de un archivo
  2. entender cual fue la cadena de modificaciones que le fuimos haciendo a lo largo del tiempo
  3. trabajar en equipo con otros sobre los mismos archivos de manera ordenada
- 
+
 Antes de ponernos a usar git vamos a ver primero otro comando: `diff`.
 
 ## diff
 
 Supongamos que estoy trabajando en una presentacion para dar una clase. Y que estoy trabajando en un archivo que se llama `presentacion.txt` donde voy anotando el contenido de la presentacion.
 
-Para que el ejemplo se entienda mas facil, lo vamos a ir haciendo juntos. 
+Para que el ejemplo se entienda mas facil, lo vamos a ir haciendo juntos.
 
 Desde una sesion de Ubuntu, abrir la aplicacion "Editor de Textos" y crear un archivo de texto llamado `presentacion.txt` en el Escritorio. Agregar el siguiente contenido y guardarlo:
 
@@ -36,32 +36,11 @@ Podemos cambiar de carpeta usando el comando `cd` (change directory). Como quere
 
 ```
 clinux01@pc1:~$ cd Escritorio/
-clinux01@pc1:~/Escritorio$ 
+clinux01@pc1:~/Escritorio$
 
 ```
 
 Notar que el prompt cambio de `~` a `~/Escritorio`. Esto quiere decir que ahora estamos "parados" en la carpeta del Escritorio.
-<!-- 
-#Como las maquinas de los laboratorios son compartidas, vamos a crear una nueva carpeta usando el comando `mkdir` (make directory). Vamos a usar un nombre unico. Por ejemplo: `taller1`, `taller2`, etc.
-#Listar los archivos con `ls -l` para confirmar que no existe una carpeta previamente creada con el nombre que elegimos:
-#
-#```
-#clinux01@pc1:~/Escritorio$ ls -l
-#total 60
-#```
-#
-#Ahora que estamos seguros, creamos nuestra carpeta:
-#
-#```
-#clinux01@pc1:~/Escritorio$ mkdir taller1
-#```
-#
-#Y confirmamos la creacion de la carpeta usando nuevamente `ls -l`:
-#```
-#clinux01@pc1:~/Escritorio$ ls -l
-#total 60
-#drwxrwxr-x 2 clinux clinux       4096 may  1 23:46  taller1
-#``` -->
 
 Confirmamos que nuestro archivo existe en el escitorio:
 ```
@@ -94,7 +73,7 @@ Esta es mi presentacion. La presentacion tiene estos temas:
 * tema 3
 ```
 
-Guardamos el archivo. 
+Guardamos el archivo.
 
 Si listamos los archivos del Escritorio vamos a poder comprobar que efectivamente los tamanos de los archivos ahora son distintos (87 bytes vs 78 bytes):
 
@@ -109,12 +88,12 @@ total 64
 En este momento podemos utilizar el comando de linux `diff` para ver las diferencias entre las 2 versioes de nuestra presentacion:
 
 ```
-clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt 
+clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt
 4d3
 < * tema 3
 ```
 
-La salida de `diff` nos confirma que efectivamente los archivos son identicos salvo por 1 linea que es diferente. 
+La salida de `diff` nos confirma que efectivamente los archivos son identicos salvo por 1 linea que es diferente.
 Si miramos la salida de diff vamos a ver el signo '<' que indica que esa linea esta en el archivo "de la izquierda", o el primer parametro que le pasamos a diff (`presentacion.txt` en nuestro caso).
 
 Veamos que pasa si ahora modificamos el otro archivo y le agregamos un tema 4. El archivo `presentacion_v1.txt` nos deberia quedar asi:
@@ -129,7 +108,7 @@ Esta es mi presentacion. La presentacion tiene estos temas:
 Grabamos el archivo presentacion_v1.txt y volvemos a hacer diff:
 
 ```
-clinux01@pc1:~/Escritorio$ diff presentacion.txt presentacion_v1.txt 
+clinux01@pc1:~/Escritorio$ diff presentacion.txt presentacion_v1.txt
 4c4
 < * tema 3
 ---
@@ -204,14 +183,14 @@ Ahora podemos preguntarle a git cual es el estado de los archivos a traves del c
 ```
 clinux01@pc1:~/Escritorio$ git status
 En la rama master
- 
+
 No hay commits todavía
- 
+
 Archivos sin seguimiento:
   (usa "git add <archivo>..." para incluirlo a lo que se será confirmado)
 	presentacion.txt
 	presentacion_v1.txt
- 
+
 no hay nada agregado al commit pero hay archivos sin seguimiento presentes (usa "git add" para hacerles seguimiento)
 ```
 
@@ -223,7 +202,7 @@ Como nos interesa seguir trabajando en nuestra presentacion vamos a pedirle a gi
 
 ```
 clinux01@pc1:~/Escritorio$ git add presentacion.txt
-clinux01@pc1:~/Escritorio$ 
+clinux01@pc1:~/Escritorio$
 ```
 
 Vemos que el comando no genera ningun mensaje por pantalla. Asi que la forma de confirmar que hubo algun cambio es volver a pedirle el status:
@@ -231,13 +210,13 @@ Vemos que el comando no genera ningun mensaje por pantalla. Asi que la forma de 
 ```
 clinux01@pc1:~/Escritorio$ git status
 En la rama master
- 
+
 No hay commits todavía
- 
+
 Cambios a ser confirmados:
   (usa "git rm --cached <archivo>..." para sacar del área de stage)
 	nuevos archivos: presentacion.txt
- 
+
 Archivos sin seguimiento:
   (usa "git add <archivo>..." para incluirlo a lo que se será confirmado)
 	presentacion_v1.txt
@@ -256,17 +235,17 @@ NOTA: si es nuestro primer commit git nos va a pedir que nos identifiquemos:
 
 ```
 clinux01@pc1:~/Escritorio$ git commit -m "version inicial de la presentacion"
- 
+
 *** Por favor cuéntame quién eres.
- 
+
 Ejecuta
- 
+
   git config --global user.email "you@example.com"
   git config --global user.name "Tu Nombre"
- 
+
 para configurar la identidad por defecto de tu cuenta.
 Omite --global para configurar tu identidad solo en este repositorio.
- 
+
 fatal: no se puede tener un nombre de identidad vacío (para <clinux01@pc1.lab1103>)
 ```
 
@@ -275,7 +254,7 @@ Como las maquinas de los laboratorios son compartidas vamos a realizar la config
 ```
 clinux01@pc1:~/Escritorio$ git config user.email [direccion de mail]
 clinux01@pc1:~/Escritorio$ git config user.name [Nombre y Apellido entre comillas]
- 
+
 ```
 
 NOTA: podemos ver la configuracion de git ejecutando `git config --list`.
@@ -298,7 +277,7 @@ En la rama master
 Archivos sin seguimiento:
   (usa "git add <archivo>..." para incluirlo a lo que se será confirmado)
 	presentacion_v1.txt
- 
+
 no hay nada agregado al commit pero hay archivos sin seguimiento presentes (usa "git add" para hacerles seguimiento)
 ```
 
@@ -380,7 +359,7 @@ De esta forma evitamos tener que ir recordando los cambios que vamos haciendo, y
 
 Podemos pensar que en principio hay 2 mundos: uno donde nosotros somos due~nos de los archivos y sobre los que git no sabe nada ni tiene potestad, y otro donde git es el responsable de gestionar los cambios de los archivos que conoce.
 
-Entonces lo que queremos hacer es ir avisandole sobre los archivos que queremos incluir bajo su control de versiones. Podemos pensar que la forma en que vamos pasando archivos de un mundo al otro es a traves de `git add`. 
+Entonces lo que queremos hacer es ir avisandole sobre los archivos que queremos incluir bajo su control de versiones. Podemos pensar que la forma en que vamos pasando archivos de un mundo al otro es a traves de `git add`.
 
 La gran ventaja que tiene git es que no se olvida de nada de lo que va pasando. Es decir, cada modificacion de un archivo la registra. Esto puede ser un problema, por ejemplo, si queremos que se "olvide" de algunos archivos que ya no nos sriven mas. El proceso para eliminar un archivo del control de versiones es:
 
@@ -398,16 +377,16 @@ Es por esta razon que cada vez que hacemos un add, tenemos que hacer un commit s
 
 ## trabajo en grupo
 
-Hasta ahora todos los ejemplos que hicimos fueron considerando el trabajo individual de 1 sola persona. Sin embargo, esto no es un escenario realista en el contexto de un proyecto de desarrollo de software, donde hay grupos de programadores trabajando sobre el mismo codigo. 
+Hasta ahora todos los ejemplos que hicimos fueron considerando el trabajo individual de 1 sola persona. Sin embargo, esto no es un escenario realista en el contexto de un proyecto de desarrollo de software, donde hay grupos de programadores trabajando sobre el mismo codigo.
 Sin ir mas lejos, el trabajo practico de la materia se realiza de manera grupal.
 
-Cuando hay varias personas trabajando sobre el mismo grupo de archivos es necesario que haya algun tipo de acuerdo en la forma en que se va a trabajar, para lograr que los cambios se hagan de manera ordenada. 
+Cuando hay varias personas trabajando sobre el mismo grupo de archivos es necesario que haya algun tipo de acuerdo en la forma en que se va a trabajar, para lograr que los cambios se hagan de manera ordenada.
 
-Retomando el ejemplo de la presentacion, podria pedirle a mis compa~neros de equipo que me ayuden a completar los slides para avanzar mas rapido. Para esto vamos a necesitar que todos accedan al mismo repositorio (hasta ahora mi repositorio era local, por lo que solo podia ser usado por mi en la computadora donde lo cree usando `git init`). 
+Retomando el ejemplo de la presentacion, podria pedirle a mis compa~neros de equipo que me ayuden a completar los slides para avanzar mas rapido. Para esto vamos a necesitar que todos accedan al mismo repositorio (hasta ahora mi repositorio era local, por lo que solo podia ser usado por mi en la computadora donde lo cree usando `git init`).
 
 ### repositorio remoto
 
-Para poder compartir el repositorio entre varias personas lo que vamos a hacer es armar un repositorio de git remoto, es decir, que va a estar corriendo como un servicio en alguna maquina de la red que sea accesible por todos los integrantes del proyecto. Una posibilidad seria instalar y configurar ese servicio en una maquina del laboratorio, de esa forma seria accessible desde cualquier otra maquina en la red del laboratorio. 
+Para poder compartir el repositorio entre varias personas lo que vamos a hacer es armar un repositorio de git remoto, es decir, que va a estar corriendo como un servicio en alguna maquina de la red que sea accesible por todos los integrantes del proyecto. Una posibilidad seria instalar y configurar ese servicio en una maquina del laboratorio, de esa forma seria accessible desde cualquier otra maquina en la red del laboratorio.
 
 Generalmente lo que se suele hacer es hacer que ese servicio este disponible a traves de un servicio web, de la misma forma que una pagina web. Por ejemplo, los siguientes son servicios que ofrecen git y pueden ser utilizados por cualquiera que tenga acceso a Internet:
 
@@ -420,50 +399,87 @@ La idea principal del repositorio remoto es que va funcionar como la "verdad ult
 
 ### flujo de trabajo
 
-De la misma forma que habiamos inicializado nuestro repositorio local a traves del comando `git init` en el caso de un repositorio remoto lo vamos a hacer a traves de la interfaz web del servicio que estemos utilizando. 
+Para hacer esta parte vamos a usar este repositorio: https://github.com/introprog-dc/tallerDeGit
 
-Esto se hace por unica vez al comienzo del proyecto. A partir de ese momento cada uno de los integrantes del proyecto tiene que acceder al repositorio. Esto se puede hacer de varias maneras, pero nosotros lo vamos a `hacer a traves de un `fork` para evitar pisarnos con otros alumnos haciendo las mismas pruebas:
+La idea es usar este proyecto es entender mejor como funciona un flujo de trabajo de multiples personas colaborando en un mismo repositorio.
+
+Lo primero es que cada uno de los integrantes del proyecto obtenga una copia del repositorio. Esto se puede hacer de varias maneras, pero nosotros lo vamos a hacer a traves de un `fork` para evitar pisarnos con otros alumnos haciendo las mismas pruebas.
+
+Entonces lo primero que vamos a hacer es clickear en el boton `fork`:
+
+[Imagen]
+
+Para poder realizar esta accion github nos va a pedir que nos logueemos con una cuenta de usuario valida (o que creemos una nueva).
+
+Una vez logueados, confirmamos el nombre que va a tener nuestro fork, y finalmente clickeamos en `create fork`
+
+[Imagen]
+
+Ahora vemos una copia (fork) del repositorio original. Esta copia es el repositorio que vamos a usar como proyecto.
+
+Entonces cada uno de los integrantes del grupo debe clonar usando `git clone`. Para esto podemos clickear en el boton que dice `code` y copiar la URL que figura ahi. Como siempre, abrimos una terminal en nuestra computadora y hacemos `git clone`.
+
+NOTA: antes de poder clonar, vamos a generar un token: https://github.com/settings/tokens
+NOTA: es MUY importante anotar el token en algun lugar seguro (idealmente un password manager) ya que github nos lo va a mostrar 1 sola vez. Si nos olvidamos el token vamos a tener que generar uno nuevo.
+
+Ahora si, usando nuestro nombre de usuario y nuestro token, vamos a clonar el repositorio:
 
 ```
+clinux01@pc1:$ git clone https://miNombreDeUsuario:miToken@github.com/miNombreDeUsuario/tallerDeGit
+Cloning into 'tallerDeGit'...
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 9 (delta 1), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (9/9), 9.82 KiB | 2.45 MiB/s, done.
+Resolving deltas: 100% (1/1), done.
+
 ```
 
-Desde una terminal vamos a clonar nuestro repositorio remoto:
+Si hacemos `ls -l` vemos que se creo un nuevo directorio llamado `tallerDeGit`:
 
 ```
-git clone https://
+clinux01@pc1:~/Escritorio$ ls -l
+drwxrwxr-x 3 clinux01 clinux01 4096 may  3 20:41 tallerDeGit/
 ```
 
-Si hacemos `ls -l` vamos a ver que hay una nueva carpeta que contiene los archivos del proyecto que acabamos de clonar:
+Para poder trabajar mas comodos vamos a posicionarnos dentro de la carpeta, haciendo `cd`:
 
 ```
+clinux01@pc1:~/Escritorio$ cd tallerDeGit
+clinux01@pc1:~/Escritorio/tallerDeGit$
 ```
 
-Tenemos entonces una copia local del repositorio remoto. 
+En este momento podemos usar los comandos que vimos antriormente. Por ejemplo, podemos ejecutar `git log` para ver los cambios que se hicieron hasta el momento en el repositorio original.
 
-En este momento vamos a modificar uno de los archivos. Podemos agregar, borrar o cambiar el contenido existente.
-Como siempre, vamos a llevar el archivo al area de stage con `git add` y vamos a confirmar el cambio con `git commit -m [mensaje]`. 
+
+En este momento vamos a modificar uno de los archivos. Podemos agregar, borrar o cambiar el contenido existente. Por ejemplo, podemos modificar el archivo `README.md`.
+
+Como siempre, vamos a llevar el archivo al area de stage con `git add` y vamos a confirmar el cambio con `git commit -m [mensaje]`.
 La diferencia principal es que los cambios que tenemos commiteados solo estan por ahora en nuestra maquina. Para que el repositorio remoto se entere de que hicimos cambios se lo tenemos que notificar usando el comando `git push`:
 
 ```
-git push
+clinux01@pc1:~/Escritorio/tallerDeGit$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 314 bytes | 314.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/miNombreDeUsuario/tallerDeGit
+   c1dd4ca..721f61f  main -> main
 ```
-
-NOTA: en realidad git nos va a pedir que nos identifiquemos antes de subir codigo al repositorio. Para esto vamos a tener que decirle nuestro nombre y nuestra direccion de mail:
-
-```
-git config...
-```
-Por suerte esto lo vamos a tener que hacer solo la primera vez.
 
 Ahora si, si vamos a la interfaz web del proyecto, vamos a ver que se registro el cambio que acabamos de confirmar.
 
 El resto de las personas que trabajan con nosotros en el proyecto van a estar realizando cambios tambien en sus copias locales, y psuheandolas eventualmente al repositorio remoto. Para obtener esos cambios realizados por otros (si los hubiera) es que vamos a realizar `git pull`:
 
 ```
-git pull
+clinux01pc1:~/Escritorio/tallerDeGit$ git pull
+Already up to date.
 ```
 
-Basicamente lo que hace `git pull` es hacer un diff de nuestro repositorio local contra el remoto, y aplicar las diferencias (patches) en el orden correcto para que ambos queden sincronizados. 
+Basicamente lo que hace `git pull` es hacer un diff de nuestro repositorio local contra el remoto, y aplicar las diferencias (patches) en el orden correcto para que ambos queden sincronizados.
 La mayor parte del tiempo es probable que los cambios realizados por distintos colaboradores no se interfieran entre si. En esos casos alcanza con el flujo `pull -> add -> commit -> push`. Sin embargo, pueden darse situaciones donde se generen conflictos. Veamos como manejarnos en esos casos.
 
 ### resolviendo conflictos
@@ -478,23 +494,50 @@ Supongamos el siguiente escenario:
     i. los cambios de U1 y U2 son compatibles. por ejemplo: U1 cambio la linea 1 y U2 la linea 2 del README.md. En este caso git aplica ambos cambios y U2 termina con una version que incluye tanto sus cambios como los del repositorio remoto. En este caso puede subir la version final haciendo `git add` y `git push`
    ii. los cambios de U1 y U2 son conflictivos. por ejemplo: ambos U1 y U2 modificaron la misma linea de maneras diferentes. En este punto git no puede resolver automaticamente el conflicto y le pide a U2 que lo resuelva manualmente. Una vez que U2 decide que hacer (si dejar su cambio o tomar el de U1) confirma el cambio y hace push
 
-Es decir, git va a intentar aplicar todos los cambios posibles siempre que no sean conflictivos. Y si hay conflicto le va a pedir al usuario que lo resuelva. 
+Es decir, git va a intentar aplicar todos los cambios posibles siempre que no sean conflictivos. Y si hay conflicto le va a pedir al usuario que lo resuelva.
 
 Probemos resolver un conflicto. Para esto vamos a simular que somos 2 usuarios diferentes clonando el mismo repositorio en 2 carpetas diferentes de la misma maquina:
 
 ```
 cd Escritorio
 mkdir repo1
-git clone https://
+cd repo1
+git clone https://miNombreDeUsuario:miToken@github.com/miNombreDeUsuario/tallerDeGit
+cd ..
 mkdir repo2
-git clone https://
-ls -lR
+cd repo2
+git clone https://miNombreDeUsuario:miToken@github.com/miNombreDeUsuario/tallerDeGit
+cd..
 ```
 
-En este momento tenemos 2 copias del mismo proyecto. Modificamos el README.md del repo1 usando el Editor de Textos y guardamos el archivo. Luego desde la terminal pusheamos el cambio:
+En este momento tenemos 2 copias del mismo proyecto. Podemos ver que los contenidos de repo1 y repo2 tienen la misma estructura:
+
+```
+clinux01@pc1:/tmp$ ls -lR repo*
+repo1:
+total 4
+drwxrwxr-x 3 clinux01 clinux01 4096 may  3 22:00 tallerDeGit
+
+repo1/tallerDeGit:
+total 32
+-rw-rw-r-- 1 clinux01 clinux01    34 may  3 22:00 README.md
+-rw-rw-r-- 1 clinux01 clinux01 25272 may  3 21:59 taller_git.md
+
+repo2:
+total 4
+drwxrwxr-x 3 clinux01 clinux01 4096 may  3 22:10 tallerDeGit
+
+repo2/tallerDeGit:
+total 32
+-rw-rw-r-- 1 clinux01 clinux01    34 may  3 22:10 README.md
+-rw-rw-r-- 1 clinux01 clinux01 25272 may  3 22:10 taller_git.md
+```
+
+Modificamos el README.md del repo1 usando el Editor de Textos y guardamos el archivo. Luego desde la terminal pusheamos el cambio:
 
 ```
 cd repo1
+cd tallerDeGit
 git status
 git add README.md
 git commit -m "hice un cambio en la primer linea"
@@ -508,29 +551,86 @@ Hacemos ahora una modificacion en el README.md del repo2 y guardamos el archivo 
 
 ```
 cd ..
+cd ..
 cd repo2
+cd tallerDeGit
 git status
 git add README.md
 git commit -m "hice otro cambio en la primer linea"
 git push
 ```
 
-En este punto el push va a fallar. Si vemos el mensaje de error nos dice que 
- 1. tenemos que editar el README.md de repo2 y solucionar el conflicto
- 2. una vez que hayamos decidido como resolverlo, tenemos que pushear la version final
+En este punto el push va a fallar y git nos va a decir que hay cambios en el repositorio remoto que no tenemos:
 
+```
+ablo@ASUS:/tmp/repo2/tallerDeGit$ git push
+To https://github.com/miNombreDeUsuario/tallerDeGit
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/miNombreDeUsuario/tallerDeGit'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+Hacemos `git pull`, pero nos vuelve a aparecer un mensaje donde git nos pide que configuremos una estrategia de merge:
+
+```
+clinux01@pc1:~/Escritorio/repo2/tallerDeGit$ git pull
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 307 bytes | 307.00 KiB/s, done.
+From https://github.com/pablorubinstein/tallerDeGit
+   721f61f..1ec3bed  main       -> origin/main
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint:
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+```
+
+Vamos a usar la estrategia default:
+
+```
+git config pull.rebase false
+```
+
+Y ahora volvemos a hacer pull:
+
+```
+clinux01@pc1:~/Escritorio/repo2/tallerDeGit$ git pull
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Si vemos el mensaje de error git nos dice que tenemos que editar el README.md de repo2 y solucionar el conflicto que se genero.
 
 Si abrimos el archivo en el Editor de Textos vamos a ver que hay bloques de texto que no estaban en el archivo original (fueron agregados por git):
 
 ```
+# tallerDeGit
+Taller de Git
+Hola!
+<<<<<<< HEAD
+Manola!
+=======
+Chau!
+>>>>>>> 1ec3bedd04acd9bfc842a8b2ee466f73f138d473
 ```
 
-En este punto tenemos que decidir cual de los dos cambios dejamos. No hay una regla general sobre como hacerlo y muchas veces probablemente tenga sentido comunicarnos con el usuario que hizo el otro cambio para ponernos de acuerdo en cual es la mejor version. 
-Una vez hecho el cambio podemos hacer `git diff` para ver que es lo que vamos a pushear:
-
-```
-git diff
-```
+En este punto tenemos que decidir cual de los dos cambios dejamos. No hay una regla general sobre como hacerlo y muchas veces probablemente tenga sentido comunicarnos con el usuario que hizo el otro cambio para ponernos de acuerdo en cual es la mejor version.
 
 Y ahora si podemos pushear
 
@@ -540,11 +640,11 @@ git commit -m "hice otro cambio en la primer linea"
 git push
 ```
 
-Si ahora volvemos a la carpeta repo1 podemos ver que nuestro archivo quedo viejo respecto del repositorio remoto:
+Si ahora volvemos a la carpeta repo1 y hacemos `git diff` no vamos a ver ninguna diferencia todavia. Esto es porque para tomar los nuevos cambios tenemos que hacer `git pull`:
 
 ```
 cd ..
-cd repo2
+cd repo1
 git diff README.md
 ```
 
@@ -556,7 +656,6 @@ git pull
 ```
 
 y ahora si ambas carpetas estan sincronizadas con el repositorio remoto.
-
 
 
 ## links
