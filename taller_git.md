@@ -88,7 +88,7 @@ total 64
 En este momento podemos utilizar el comando de linux `diff` para ver las diferencias entre las 2 versioes de nuestra presentacion:
 
 ```
-clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt
+clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt$
 4d3
 < * tema 3
 ```
@@ -140,7 +140,7 @@ Inicializado repositorio Git vacío en /home/clinux01/Escritorio/.git/
 Si listamos el contenido de la carpeta vamos a seguir viendo nuestros archivos:
 
 ```
-clinux01@pc1:~/Escritorio$ ls -l
+clinux01@pc01:~/Escritorio$ ls -l
 total 64
 -rw-rw-r-- 1 clinux clinux   87 may  1 13:15  presentacion.txt
 -rw-rw-r-- 1 clinux clinux   87 may  1 13:22  presentacion_v1.txt
@@ -330,6 +330,7 @@ Es decir, que ademas de darnos las diferencias, nos muestra un poco mas de conte
 Si estamos satisfechos con los cambios que hicimos, entonces le decimos a git que queremos agregar los cambios del archivo (`git add`) y se lo confirmamos (`git commit`):
 
 ```
+clinux01@pc1:~/Escritorio$ git add presentacion.txt
 clinux01@pc1:~/Escritorio$ git commit -m "agregue tema. saque tema"
 [master 2cc3337] agregue tema. saque tema
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -371,9 +372,43 @@ Esto puede ser un problema si somos ansiosos y agregamos un monton de archivos y
 
 Para evitar ese problema (y otros) git usa un tercer "mundo" que es un intermedio entre el mundo de git y el de nuestros archivos no-versionados. Esta area de pruebas o `stage` es donde se van agregando los cambios hasta que se confirman (commit). El comando commit es el que termina pasando los cambios al mundo de git.
 
-[diagrama]
+![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/stage.png?raw=true)
+
 
 Es por esta razon que cada vez que hacemos un add, tenemos que hacer un commit si queremos que nuestro cambio sea tomado efectivamente por git.
+
+NOTA: podria darse el caso de que hayamos agregado algun archivo por error. Esto es muy comun si hicimos `git add .` o `git add presentacion*` porque en esos casos git va a interepretar que queremos incroporar un grupo de archivos. Entonces podria ser que se haya agregado algun archivo por error. En estos casos, la salida de `git status` nos dice como solucionarlo:
+
+```
+clinux01@pc1:~/Escritorio$ ls -l presen*
+-rw-rw-r-- 1 clinux01 clinux01 96 may  7 13:40 presentacion.txt
+-rw-rw-r-- 1 clinux01 clinux01 87 may  1 13:22 presentacion_v1.txt
+clinux01@pc1:~/Escritorio$ git add presen*
+clinux01@pc1:~/Escritorio$ git status .
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)   <---- ACA
+	modified:   presentacion.txt
+	new file:   presentacion_v1.txt
+```
+
+Entonces si queremos sacar `presentacion_v1.txt`, lo hacemos con `git restore --staged`:
+
+
+```
+clinux01@pc1:~/Escritorio$ git restore --staged presentacion_v1.txt
+clinux01@pc1:~/Escritorio$ git status .
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   presentacion.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	presentacion_v1.txt
+```
+
+Nuevamente, esto es posible porque existe el stage intermedio que permite "arrepentirse" antes de confirmar con `git commit`.
 
 ## trabajo en grupo
 
@@ -419,13 +454,15 @@ Ahora vemos una copia (fork) del repositorio original. Esta copia es el reposito
 
 Entonces cada uno de los integrantes del grupo debe clonar usando `git clone`. Para esto podemos clickear en el boton que dice `code` y copiar la URL que figura ahi. Como siempre, abrimos una terminal en nuestra computadora y hacemos `git clone`.
 
-NOTA: antes de poder clonar, vamos a generar un token: https://github.com/settings/tokens
+NOTA: antes de poder clonar, vamos a generar un token: https://github.com/settings/tokens. Esto lo vamos a hacer para simplificar nuestros ejemplos. En la vida real seria mas prolijo configurar una clave SSH para interactuar con el repositorio remoto.
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git4.png?raw=true)
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git5.png?raw=true)
 
 NOTA: es MUY importante anotar el token en algun lugar seguro (idealmente un password manager) ya que github nos lo va a mostrar 1 sola vez. Si nos olvidamos el token vamos a tener que generar uno nuevo.
+
+NOTA: tambien es muy importante que al finalizar nuestro trabajo en las maquinas de los laboratorios borremos el repositorio local, ya que el token queda guardado en los archivos internos de git, por lo que otra persona podria hacer cambios en nuestro fork (el repositorio original desde donde forkeamos se mantendria inalterado).
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git6.png?raw=true)
 
@@ -570,7 +607,7 @@ git push
 En este punto el push va a fallar y git nos va a decir que hay cambios en el repositorio remoto que no tenemos:
 
 ```
-clinux01@pc1:/tmp/repo2/tallerDeGit$ git push
+clinux01@pc1:~/Escritorio/repo2/tallerDeGit$ git push
 To https://github.com/miNombreDeUsuario/tallerDeGit
  ! [rejected]        main -> main (fetch first)
 error: failed to push some refs to 'https://github.com/miNombreDeUsuario/tallerDeGit'
@@ -664,11 +701,23 @@ git pull
 
 y ahora si ambas carpetas estan sincronizadas con el repositorio remoto.
 
+## antes de finalizar
+
+Dado que estamos usando computadoras compartidas, vamos a dejar el ambiente ordenado y listo para que otra persona pueda realizar las mismas pruebas que hicimos nosotros. Para esto vamos a:
+
+1. eliminar los archivos `presentacion.txt` y `presentacion_v1.txt` que hayamos creado en el Escritorio del usuario `clinux01`
+1. eliminar las copias de nuestros repositorios locales y tokens cacheados
+
+En el caso en que nos interese seguir trabajando solo tenemos que continuar usando nuestro repositorio remoto con el token correspondiente.
+
+Si bien en los ejemplos que vimos usamos la version de linea de comando, existen aplicaciones con interfaz grafica para simplificar la experiencia de uso. Ahora que tienen conocimientos basicos de como utilizar git, van a poder entender facilmente cuales son los comandos que se estan ejecutando por detras.
+
+Recuerden que todos los comandos de git tienen una ayuda en linea a la que pueden acceder ejecutando el comando con el agregado de la opcion `-h` o usando el comando `help`. Por ejemplo: `git add -h` da la version de ayuda corta y `git help add` la version larga.
+
+Por ultimo, hay mucho material disponible en la red sobre git, sus comandos y las multiples formas de usarlo. Estan mas que invitados a seguir explorando git por su cuenta :)
+
 
 ## links
 
 - git (pagina oficial): https://git-scm.com/
 - github + git: https://docs.github.com/en/get-started/using-git/about-git
-
-
-
