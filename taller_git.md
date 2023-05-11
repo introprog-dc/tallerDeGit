@@ -697,7 +697,6 @@ Para sincronizar repo2 podemos hacer `git pull`:
 
 ```
 git pull
-
 ```
 
 y ahora si ambas carpetas estan sincronizadas con el repositorio remoto.
@@ -721,4 +720,4 @@ Por ultimo, hay mucho material disponible en la red sobre git, sus comandos y la
 ## links
 
 - git (pagina oficial): https://git-scm.com/
-- github + git: https://docs.github.com/en/get-started/using-git/about-git
+- github + git: https://docs.github.com/es/get-started/using-git/about-git
