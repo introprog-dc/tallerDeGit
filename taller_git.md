@@ -30,7 +30,7 @@ Abrir una terminal (CTRL + ALT + T). Nos tiene que aparecer un prompt, que nos d
 clinux01@pc1:~$
 ```
 
-En este caso el usuario se llama `clinux`, es un usuario de la maquina que se llama `pc1` y la carpeta donde estamos posicionados se llama `~` que es una forma abreviada de decir que estamos en la carpeta "home" del usuario (es decir, `/home/clinux`).
+En este caso el usuario se llama `clinux01`, es un usuario de la maquina que se llama `pc1` y la carpeta donde estamos posicionados se llama `~` que es una forma abreviada de decir que estamos en la carpeta "home" del usuario (es decir, `/home/clinux01`).
 
 Podemos cambiar de carpeta usando el comando `cd` (change directory). Como queremos que nuestro archivo quede en el escritorio vamos a hacer `cd Escritorio`:
 
@@ -46,7 +46,7 @@ Confirmamos que nuestro archivo existe en el escitorio:
 ```
 clinux01@pc1:~/Escritorio$ ls -l
 total 60
--rw-rw-r-- 1 clinux clinux   78 may  1 13:14  presentacion.txt
+-rw-rw-r-- 1 clinux01 clinux01   78 may  1 13:14  presentacion.txt
 ```
 
 Hacer una copia de nuestra presentación usando el comando `cp` (copy):
@@ -60,8 +60,8 @@ Verificar que tenemos los dos archivos y que tienen el mismo tamano (78 bytes):
 ```
 clinux01@pc1:~/Escritorio$ ls -l
 total 60
--rw-rw-r-- 1 clinux clinux   78 may  1 13:14  presentacion.txt
--rw-rw-r-- 1 clinux clinux   78 may  1 13:14  presentacion_v1.txt
+-rw-rw-r-- 1 clinux01 clinux01   78 may  1 13:14  presentacion.txt
+-rw-rw-r-- 1 clinux01 clinux01   78 may  1 13:14  presentacion_v1.txt
 ```
 
 Ahora que tengo backupeado mi archivo lo voy a modificar. Desde el editor de texto que teniamos abierto, agregamos un nuevo tema:
@@ -81,14 +81,14 @@ Si listamos los archivos del Escritorio vamos a poder comprobar que efectivament
 ls -l
 clinux01@pc1:~/Escritorio$ ls -l
 total 64
--rw-rw-r-- 1 clinux clinux   87 may  1 13:15  presentacion.txt
--rw-rw-r-- 1 clinux clinux   78 may  1 13:15  presentacion_v1.txt
+-rw-rw-r-- 1 clinux01 clinux01   87 may  1 13:15  presentacion.txt
+-rw-rw-r-- 1 clinux01 clinux01   78 may  1 13:15  presentacion_v1.txt
 ```
 
 En este momento podemos utilizar el comando de linux `diff` para ver las diferencias entre las 2 versiones de nuestra presentación:
 
 ```
-clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt$
+clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt
 4d3
 < * tema 3
 ```
@@ -142,8 +142,8 @@ Si listamos el contenido de la carpeta vamos a seguir viendo nuestros archivos:
 ```
 clinux01@pc01:~/Escritorio$ ls -l
 total 64
--rw-rw-r-- 1 clinux clinux   87 may  1 13:15  presentacion.txt
--rw-rw-r-- 1 clinux clinux   87 may  1 13:22  presentacion_v1.txt
+-rw-rw-r-- 1 clinux01 clinux01   87 may  1 13:15  presentacion.txt
+-rw-rw-r-- 1 clinux01 clinux01   87 may  1 13:22  presentacion_v1.txt
 ```
 
 Pero si agregamos la opcion `-a` vamos a poder ver una carpeta oculta llamada `.git`:
@@ -151,11 +151,11 @@ Pero si agregamos la opcion `-a` vamos a poder ver una carpeta oculta llamada `.
 ```
 clinux01@pc1:~/Escritorio$ ls -l -a
 total 76
-drwxr-xr-x  6 clinux clinux 4096 may  1 13:38  .
-drwxr-xr-x 97 clinux clinux 4096 may  1 13:22  ..
-drwxrwxr-x  7 clinux clinux 4096 may  1 13:38  .git
--rw-rw-r--  1 clinux clinux   87 may  1 13:15  presentacion.txt
--rw-rw-r--  1 clinux clinux   87 may  1 13:22  presentacion_v1.txt
+drwxr-xr-x  6 clinux01 clinux01 4096 may  1 13:38  .
+drwxr-xr-x 97 clinux01 clinux01 4096 may  1 13:22  ..
+drwxrwxr-x  7 clinux01 clinux01 4096 may  1 13:38  .git
+-rw-rw-r--  1 clinux01 clinux01   87 may  1 13:15  presentacion.txt
+-rw-rw-r--  1 clinux01 clinux01   87 may  1 13:22  presentacion_v1.txt
 ```
 
 NOTA: también aparecen 2 carpetas más: '.', que representa la carpeta actual y '..' que representa a la carpeta "padre" de la actual. Es por esto que si hacemos `cd ..` cambiamos de carpeta a la que esta en el nivel superior. Y de la misma forma si hacemos `cd .` nos quedamos posicionados en la misma carpeta donde estamos.
@@ -165,14 +165,14 @@ Podemos ver que en la carpeta `.git` hay varios archivos y carpetas:
 ```
 clinux01@pc1:~/Escritorio$ ls -l .git
 total 32
-drwxrwxr-x 2 clinux clinux 4096 may  1 13:38 branches
--rw-rw-r-- 1 clinux clinux   92 may  1 13:38 config
--rw-rw-r-- 1 clinux clinux   73 may  1 13:38 description
--rw-rw-r-- 1 clinux clinux   23 may  1 13:38 HEAD
-drwxrwxr-x 2 clinux clinux 4096 may  1 13:38 hooks
-drwxrwxr-x 2 clinux clinux 4096 may  1 13:38 info
-drwxrwxr-x 4 clinux clinux 4096 may  1 13:38 objects
-drwxrwxr-x 4 clinux clinux 4096 may  1 13:38 refs
+drwxrwxr-x 2 clinux01 clinux01 4096 may  1 13:38 branches
+-rw-rw-r-- 1 clinux01 clinux01   92 may  1 13:38 config
+-rw-rw-r-- 1 clinux01 clinux01   73 may  1 13:38 description
+-rw-rw-r-- 1 clinux01 clinux01   23 may  1 13:38 HEAD
+drwxrwxr-x 2 clinux01 clinux01 4096 may  1 13:38 hooks
+drwxrwxr-x 2 clinux01 clinux01 4096 may  1 13:38 info
+drwxrwxr-x 4 clinux01 clinux01 4096 may  1 13:38 objects
+drwxrwxr-x 4 clinux01 clinux01 4096 may  1 13:38 refs
 
 ```
 
