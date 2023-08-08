@@ -1,8 +1,8 @@
 # git
 
-git es una herramienta para la gestion de versiones de archivos. Esto quiere decir que nos facilita el versionado de nuestros archivos, permitiendonos entre otras cosas:
+git es una herramienta para la gestion de versiones de archivos. Esto quiere decir que nos facilita el versionado de nuestros archivos, permitiéndonos entre otras cosas:
 
- 1. entender cual es la ultima version de un archivo
+ 1. entender cual es la última versión de un archivo
  2. entender cual fue la cadena de modificaciones que le fuimos haciendo a lo largo del tiempo
  3. trabajar en equipo con otros sobre los mismos archivos de manera ordenada
 
@@ -12,9 +12,9 @@ Antes de ponernos a usar git vamos a ver primero otro comando: `diff`.
 
 Supongamos que estoy trabajando en una presentacion para dar una clase. Y que estoy trabajando en un archivo que se llama `presentacion.txt` donde voy anotando el contenido de la presentacion.
 
-Para que el ejemplo se entienda mas facil, lo vamos a ir haciendo juntos.
+Para que el ejemplo se entienda más fácilmente, lo vamos a ir haciendo juntos.
 
-Desde una sesion de Ubuntu, abrir la aplicacion "Editor de Textos" y crear un archivo de texto llamado `presentacion.txt` en el Escritorio. Agregar el siguiente contenido y guardarlo:
+Desde una sesión de Ubuntu, abrir la aplicacion "Editor de Textos" y crear un archivo de texto llamado `presentacion.txt` en el Escritorio. Agregar el siguiente contenido y guardarlo:
 
 ```
 Esta es mi presentacion. La presentacion tiene estos temas:
@@ -22,15 +22,15 @@ Esta es mi presentacion. La presentacion tiene estos temas:
 * tema 2
 ```
 
-Supongamos ahora que sigo trabajando en mi presentacion, pero como voy a hacer cambios, hago un backup de mi archivo primero:
+Supongamos ahora que sigo trabajando en mi presentación, pero como voy a hacer cambios, primero hago un backup de mi archivo:
 
-Abrir una terminal (CTRL + ALT + T). Nos tiene que aparecer un prompt, que nos dice basicamente el nombre del usuario que estamos usando y la carpeta donde estamos posicionados:
+Abrir una terminal (CTRL + ALT + T). Nos tiene que aparecer un prompt, que nos dice básicamente el nombre del usuario que estamos usando y la carpeta donde estamos posicionados:
 
 ```
 clinux01@pc1:~$
 ```
 
-En este caso el usuario se llama `clinux01`, es un usuario de la maquina que se llama `pc1` y la carpeta donde estamos posicionados se llama `~` que es una forma abreviada de decir que estamos en la carpeta "home" del usuario (es decir, `/home/clinux01`).
+En este caso el usuario se llama `clinux01`, es un usuario de la máquina que se llama `pc1` y la carpeta donde estamos posicionados se llama `~` que es una forma abreviada de decir que estamos en la carpeta "home" del usuario (es decir, `/home/clinux01`).
 
 Podemos cambiar de carpeta usando el comando `cd` (change directory). Como queremos que nuestro archivo quede en el escritorio vamos a hacer `cd Escritorio`:
 
@@ -49,13 +49,13 @@ total 60
 -rw-rw-r-- 1 clinux01 clinux01   78 may  1 13:14  presentacion.txt
 ```
 
-Hacer una copia de nuestra presentación usando el comando `cp` (copy):
+Hacemos una copia de nuestra presentación usando el comando `cp` (copy):
 
 ```
 cp presentacion.txt presentacion_v1.txt
 ```
 
-Verificar que tenemos los dos archivos y que tienen el mismo tamano (78 bytes):
+Verificamos que tenemos los dos archivos y que ambos tienen el mismo tamano (78 bytes):
 
 ```
 clinux01@pc1:~/Escritorio$ ls -l
@@ -64,7 +64,7 @@ total 60
 -rw-rw-r-- 1 clinux01 clinux01   78 may  1 13:14  presentacion_v1.txt
 ```
 
-Ahora que tengo backupeado mi archivo lo voy a modificar. Desde el editor de texto que teniamos abierto, agregamos un nuevo tema:
+Ahora que tenemos backupeado nuestro archivo lo vamos a modificar. Desde el editor de texto que teníamos abierto, agregamos un nuevo tema:
 
 ```
 Esta es mi presentación. La presentación tiene estos temas:
@@ -94,9 +94,9 @@ clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt
 ```
 
 La salida de `diff` nos confirma que efectivamente los archivos son idénticos salvo por 1 linea que es diferente.
-Si miramos la salida de diff vamos a ver el signo '<' que indica que esa línea está en el archivo "de la izquierda", o el primer parámetro que le pasamos a diff (`presentacion.txt` en nuestro caso).
+Si miramos la salida de `diff` vamos a ver el signo '<' que indica que esa línea está en el archivo "de la izquierda", o el primer parámetro que le pasamos a `diff` (`presentacion.txt` en nuestro caso).
 
-Veamos qué pasa si ahora modificamos el otro archivo y le agregamos un tema 4. El archivo `presentacion_v1.txt` nos deberia quedar asi:
+Veamos qué pasa si ahora modificamos el otro archivo y le agregamos un tema 4. El archivo `presentacion_v1.txt` nos debería quedar asi:
 
 ```
 Esta es mi presentacion. La presentacion tiene estos temas:
@@ -115,9 +115,9 @@ clinux01@pc1:~/Escritorio$ diff presentacion.txt presentacion_v1.txt
 > * tema 4
 ```
 
-Ahora es mas claro que diff nos esta avisando que la linea que menciona al tema 3 solo esta en el primer archivo, y la que menciona al tema 4 esta solo en el segundo archivo.
+Ahora es mas claro que `diff` nos esta avisando que la linea que menciona al tema 3 solo esta en el primer archivo, y la que menciona al tema 4 esta solo en el segundo archivo.
 
-NOTA: diff tambien nos esta diciendo `4c4`, que significa que la linea 4 del primer archivo cambió (c=changed) respecto de la linea 4 del segundo archivo. En el caso anterior nos decia 4d3, lo que significa que la linea 4 del archivo de la izquierda fue eliminada (d=deleted) en el segundo archivo.
+NOTA: `diff` tambien nos esta diciendo `4c4`, que significa que la linea 4 del primer archivo cambió (c=changed) respecto de la linea 4 del segundo archivo. En el caso anterior nos decia 4d3, lo que significa que la linea 4 del archivo de la izquierda fue eliminada (d=deleted) en el segundo archivo.
 
 NOTA: la mayoria de los comandos de linux tienen una ayuda disponible en la forma de un "manual de instrucciones". Para ver el de `diff` ejecutar desde una terminal `man diff`
 
@@ -303,7 +303,7 @@ Esta es mi presentacion. La presentacion tiene estos temas:
 * tema 5
 ```
 
-Dado que presentacion.txt está bajo la gestión de git, entonces podemos preguntarle cuáles son las diferencias con la version que git conoce. Para esto usamos el comando `git diff`:
+Dado que presentacion.txt está bajo la gestión de git, entonces podemos preguntarle cuáles son las diferencias con la versión que git conoce. Para esto usamos el comando `git diff`:
 
 ```
 clinux01@pc1:~/Escritorio$ git diff presentacion.txt
@@ -418,7 +418,7 @@ Sin ir más lejos, el trabajo práctico de la materia se realiza de manera grupa
 
 Cuando hay varias personas trabajando sobre el mismo grupo de archivos es necesario que haya algun tipo de acuerdo en la forma en que se va a trabajar, para lograr que los cambios se hagan de manera ordenada.
 
-Retomando el ejemplo de la presentación, podria pedirle a mis compañeros de equipo que me ayuden a completar los slides para avanzar más ápido. Para esto vamos a necesitar que todos accedan al mismo repositorio (hasta ahora mi repositorio era local, por lo que solo podia ser usado por mi en la computadora donde lo cree usando `git init`).
+Retomando el ejemplo de la presentación, podría pedirle a mis compañeros de equipo que me ayuden a completar los slides para avanzar más rápido. Para esto vamos a necesitar que todos accedan al mismo repositorio (hasta ahora mi repositorio era local, por lo que solo podía ser usado por mí en la computadora donde lo cree usando `git init`).
 
 ### repositorio remoto
 
@@ -429,7 +429,7 @@ Generalmente lo que se suele hacer es hacer que ese servicio este disponible a t
  * http://www.github.com
  * http://www.gitlab.com
 
-Por ejemplo, si la decision es usar github entonces todos los integrantes del proyecto deberian crearse una cuenta en ese servicio y a partir de ese momento podrian utilizar los mismos comandos de git que estuvimos viendo (más algunos comandos adicionales que vamos a ver en breve).
+Por ejemplo, si la decision es usar github entonces todos los integrantes del proyecto deberían crearse una cuenta en ese servicio y a partir de ese momento podrian utilizar los mismos comandos de git que estuvimos viendo (más algunos comandos adicionales que vamos a ver en breve).
 
 La idea principal del repositorio remoto es que va funcionar como la "verdad última" (`ultimate source of truth`) respecto de cuál es la última versión de cada uno de los archivos que este bajo la administración de git.
 
@@ -535,13 +535,13 @@ Supongamos el siguiente escenario:
  2. el usuario U1 clona el repositorio remoto. el usuario U2 hace lo mismo al mismo tiempo. Es decir, que los repositorios locales de U1 y U2 comienzan sincronizados
  3. U1 modifica un archivo (README.md). commitea y pushea el cambio al repositorio remoto
  4. U2 tambien modifica el mismo archivo, pero lo hace más lento que U1. Entonces cuando U2 hace commuit y push, git le avisa que su repositorio no esta al dia, por lo que debe hacer primero un `git pull`
- 5. U2 hace un `git pull` pero dado que hay una nueva version del README.md en el repositorio remoto, git intenta fusionar (mergear) ambas copias en el repositorio local de U2. Pueden darse 2 escenarios:
-    i. los cambios de U1 y U2 son compatibles. por ejemplo: U1 cambio la linea 1 y U2 la linea 2 del README.md. En este caso git aplica ambos cambios y U2 termina con una versión que incluye tanto sus cambios como los del repositorio remoto. En este caso puede subir la version final haciendo `git add` y `git push`
+ 5. U2 hace un `git pull` pero dado que hay una nueva versión del README.md en el repositorio remoto, git intenta fusionar (mergear) ambas copias en el repositorio local de U2. Pueden darse 2 escenarios:
+    i. los cambios de U1 y U2 son compatibles. por ejemplo: U1 cambio la linea 1 y U2 la linea 2 del README.md. En este caso git aplica ambos cambios y U2 termina con una versión que incluye tanto sus cambios como los del repositorio remoto. En este caso puede subir la versión final haciendo `git add` y `git push`
    ii. los cambios de U1 y U2 son conflictivos. Por ejemplo: ambos U1 y U2 modificaron la misma linea de maneras diferentes. En este punto git no puede resolver automáticamente el conflicto y le pide a U2 que lo resuelva manualmente. Una vez que U2 decide que hacer (si dejar su cambio o tomar el de U1) confirma el cambio y hace push
 
 Es decir, git va a intentar aplicar todos los cambios posibles siempre que no sean conflictivos. Y si hay conflicto le va a pedir al usuario que lo resuelva.
 
-Probemos resolver un conflicto. Para esto vamos a simular que somos 2 usuarios diferentes clonando el mismo repositorio en 2 carpetas diferentes de la misma maquina:
+Probemos resolver un conflicto. Para esto vamos a simular que somos 2 usuarios diferentes clonando el mismo repositorio en 2 carpetas diferentes de la misma máquina:
 
 ```
 cd Escritorio
@@ -712,7 +712,7 @@ En el caso en que nos interese seguir trabajando solo tenemos que continuar usan
 
 Si bien en los ejemplos que vimos usamos la versión de linea de comando, existen aplicaciones con interfaz gráfica para simplificar la experiencia de uso. Ahora que tienen conocimientos básicos de cómo utilizar git, van a poder entender fácilmente cuáles son los comandos que se están ejecutando por detras.
 
-Recuerden que todos los comandos de git tienen una ayuda en linea a la que pueden acceder ejecutando el comando con el agregado de la opcion `-h` o usando el comando `help`. Por ejemplo: `git add -h` da la version de ayuda corta y `git help add` la version larga.
+Recuerden que todos los comandos de git tienen una ayuda en linea a la que pueden acceder ejecutando el comando con el agregado de la opcion `-h` o usando el comando `help`. Por ejemplo: `git add -h` da la versión de ayuda corta y `git help add` la versión larga.
 
 Por ultimo, hay mucho material disponible en la red sobre git, sus comandos y las múltiples formas de usarlo. Estan más que invitados a seguir explorando git por su cuenta :)
 
