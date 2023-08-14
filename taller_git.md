@@ -716,6 +716,7 @@ Dado que estamos usando computadoras compartidas, vamos a dejar el ambiente orde
 1. eliminar los archivos `presentacion.txt` y `presentacion_v1.txt` que hayamos creado en el Escritorio del usuario `clinux01`
 1. eliminar las copias de nuestros repositorios locales y tokens cacheados
 1. eliminar la carpeta `.git` que quedo en el Escritorio: `rm -rf ~/Desktop/.git`
+1. eliminar el historial de la terminal: `history -c && history -w`
 
 En el caso en que nos interese seguir trabajando solo tenemos que continuar usando nuestro repositorio remoto con el token correspondiente.
 
