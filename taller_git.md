@@ -130,7 +130,15 @@ Por ejemplo, podria darse el caso de que quieren trabajar en en la presentacion 
 
 git nos va a permitir ir entendiendo las diferencias entre nuestros archivos de forma más sencilla.
 
-Lo primero que vamos a hacer es inicializar un "repositorio" que es el nombre que le da git a una colección de archivos:
+NOTA: como las maquinas de los laboratorios son compartidos vamos a ejecutar una limpieza de archivos y comandos que puedan haber quedado guardados de antes:
+
+```
+clinux01@pc1:~/Escritorio$ rm -rf ./git
+clinux01@pc1:~/Escritorio$ git config --global --unset -all user.email
+clinux01@pc1:~/Escritorio$ git config --global --unset -all user.name
+```
+
+Ahoa si, vamos a inicializar un "repositorio" que es el nombre que le da git a una colección de archivos:
 
 ```
 clinux01@pc1:~/Escritorio$ git init
@@ -707,6 +715,7 @@ Dado que estamos usando computadoras compartidas, vamos a dejar el ambiente orde
 
 1. eliminar los archivos `presentacion.txt` y `presentacion_v1.txt` que hayamos creado en el Escritorio del usuario `clinux01`
 1. eliminar las copias de nuestros repositorios locales y tokens cacheados
+1. eliminar la carpeta `.git` que quedo en el Escritorio: `rm -rf ~/Desktop/.git`
 
 En el caso en que nos interese seguir trabajando solo tenemos que continuar usando nuestro repositorio remoto con el token correspondiente.
 
