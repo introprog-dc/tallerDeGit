@@ -130,7 +130,7 @@ Por ejemplo, podria darse el caso de que quieren trabajar en en la presentacion 
 
 git nos va a permitir ir entendiendo las diferencias entre nuestros archivos de forma más sencilla.
 
-NOTA: como las maquinas de los laboratorios son compartidos vamos a ejecutar una limpieza de archivos y comandos que puedan haber quedado guardados de antes:
+NOTA: como las maquinas de los laboratorios son compartidas vamos a ejecutar una limpieza de archivos y comandos que puedan haber quedado guardados de antes:
 
 ```
 clinux01@pc1:~/Escritorio$ rm -rf ./git
