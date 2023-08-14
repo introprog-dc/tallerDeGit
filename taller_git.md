@@ -134,8 +134,8 @@ NOTA: como las maquinas de los laboratorios son compartidas vamos a ejecutar una
 
 ```
 clinux01@pc1:~/Escritorio$ rm -rf ./git
-clinux01@pc1:~/Escritorio$ git config --global --unset -all user.email
-clinux01@pc1:~/Escritorio$ git config --global --unset -all user.name
+clinux01@pc1:~/Escritorio$ git config --global --unset-all user.email
+clinux01@pc1:~/Escritorio$ git config --global --unset-all user.name
 ```
 
 Ahoa si, vamos a inicializar un "repositorio" que es el nombre que le da git a una colección de archivos:
