@@ -133,7 +133,7 @@ git nos va a permitir ir entendiendo las diferencias entre nuestros archivos de 
 NOTA: como las maquinas de los laboratorios son compartidas vamos a ejecutar una limpieza de archivos y comandos que puedan haber quedado guardados de antes:
 
 ```
-clinux01@pc1:~/Escritorio$ rm -rf ./git
+clinux01@pc1:~/Escritorio$ rm -rf ./.git
 clinux01@pc1:~/Escritorio$ git config --global --unset-all user.email
 clinux01@pc1:~/Escritorio$ git config --global --unset-all user.name
 ```
