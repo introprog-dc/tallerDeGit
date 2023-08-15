@@ -22,7 +22,7 @@ Esta es mi presentacion. La presentacion tiene estos temas:
 * tema 2
 ```
 
-Supongamos ahora que sigo trabajando en mi presentación, pero como voy a hacer cambios, primero hago un backup de mi archivo:
+Supongamos ahora que sigo trabajando en mi presentación, pero como voy a hacer cambios, primero hago un backup de mi archivo.
 
 Abrir una terminal (CTRL + ALT + T). Nos tiene que aparecer un prompt, que nos dice básicamente el nombre del usuario que estamos usando y la carpeta donde estamos posicionados:
 
@@ -67,7 +67,7 @@ total 60
 Ahora que tenemos backupeado nuestro archivo lo vamos a modificar. Desde el editor de texto que teníamos abierto, agregamos un nuevo tema:
 
 ```
-Esta es mi presentación. La presentación tiene estos temas:
+Esta es mi presentacion. La presentacion tiene estos temas:
 * tema 1
 * tema 2
 * tema 3
@@ -85,7 +85,7 @@ total 64
 -rw-rw-r-- 1 clinux01 clinux01   78 may  1 13:15  presentacion_v1.txt
 ```
 
-En este momento podemos utilizar el comando de linux `diff` para ver las diferencias entre las 2 versiones de nuestra presentación:
+En este momento podemos utilizar el comando `diff` para ver las diferencias entre las 2 versiones de nuestra presentación:
 
 ```
 clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt
@@ -93,7 +93,7 @@ clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt
 < * tema 3
 ```
 
-La salida de `diff` nos confirma que efectivamente los archivos son idénticos salvo por 1 linea que es diferente.
+La salida de `diff` nos confirma que efectivamente los archivos son idénticos salvo por 1 línea que es diferente.
 Si miramos la salida de `diff` vamos a ver el signo '<' que indica que esa línea está en el archivo "de la izquierda", o el primer parámetro que le pasamos a `diff` (`presentacion.txt` en nuestro caso).
 
 Veamos qué pasa si ahora modificamos el otro archivo y le agregamos un tema 4. El archivo `presentacion_v1.txt` nos debería quedar asi:
@@ -115,30 +115,30 @@ clinux01@pc1:~/Escritorio$ diff presentacion.txt presentacion_v1.txt
 > * tema 4
 ```
 
-Ahora es mas claro que `diff` nos esta avisando que la linea que menciona al tema 3 solo esta en el primer archivo, y la que menciona al tema 4 esta solo en el segundo archivo.
+Ahora es mas claro que `diff` nos esta avisando que la línea que menciona al tema 3 sólo está en el primer archivo, y la que menciona al tema 4 está sólo en el segundo archivo.
 
-NOTA: `diff` tambien nos esta diciendo `4c4`, que significa que la linea 4 del primer archivo cambió (c=changed) respecto de la linea 4 del segundo archivo. En el caso anterior nos decia 4d3, lo que significa que la linea 4 del archivo de la izquierda fue eliminada (d=deleted) en el segundo archivo.
+NOTA: `diff` tambien nos está diciendo `4c4`, que significa que la línea 4 del primer archivo cambió (c=changed) respecto de la línea 4 del segundo archivo. En el caso anterior nos decía 4d3, lo que significa que la línea 4 del archivo de la izquierda fue eliminada (d=deleted) en el segundo archivo.
 
-NOTA: la mayoria de los comandos de linux tienen una ayuda disponible en la forma de un "manual de instrucciones". Para ver el de `diff` ejecutar desde una terminal `man diff`
+NOTA: la mayoría de los comandos de linux tienen una ayuda disponible en la forma de un "manual de instrucciones". Para ver el de `diff` ejecutar desde una terminal `man diff`
 
-Ahora que podemos ver los cambios entre las diferentes versiones del archivo podemos trabajar con un poco más de tranquilidad ya que podemos entender mas facilmente cuáles son las diferencias entre ellos.
+Ahora que podemos ver los cambios entre las diferentes versiones del archivo podemos trabajar con un poco más de tranquilidad ya que podemos entender más facilmente cuáles son las diferencias entre ellos.
 
-Por ejemplo, podria darse el caso de que quieren trabajar en en la presentacion en una computadora de la facultad durante el dia y en mi casa por la noche. Entonces cada vez que copio los archivos podria hacer un diff para verificar que tengo todos los cambios y no estoy pisando por error cambios que me interesan.
+Por ejemplo, podría darse el caso de que quieren trabajar en en la presentación en una computadora de la facultad durante el día y en mi casa por la noche. Entonces cada vez que copio los archivos podria hacer un diff para verificar que tengo todos los cambios y no estoy pisando por error cambios que me interesan.
 
 
 ## usando git
 
 git nos va a permitir ir entendiendo las diferencias entre nuestros archivos de forma más sencilla.
 
-NOTA: como las maquinas de los laboratorios son compartidas vamos a ejecutar una limpieza de archivos y comandos que puedan haber quedado guardados de antes:
+NOTA: como las máquinas de los laboratorios son compartidas vamos a ejecutar una limpieza de archivos y comandos que puedan haber quedado guardados de antes:
 
 ```
-clinux01@pc1:~/Escritorio$ rm -rf ./.git
+clinux01@pc1:~/Escritorio$ rm -rf ~/Escritorio/.git
 clinux01@pc1:~/Escritorio$ git config --global --unset-all user.email
 clinux01@pc1:~/Escritorio$ git config --global --unset-all user.name
 ```
 
-Ahoa si, vamos a inicializar un "repositorio" que es el nombre que le da git a una colección de archivos:
+Ahoa sí, vamos a inicializar un "repositorio" que es el nombre que le da git a una colección de archivos:
 
 ```
 clinux01@pc1:~/Escritorio$ git init
@@ -184,7 +184,7 @@ drwxrwxr-x 4 clinux01 clinux01 4096 may  1 13:38 refs
 
 ```
 
-Estos archivos y carpetas son internos a git y son los que va a usar para llevar la cuenta de las modificaciones que vamos realizando, asi que no los vamos a modificar.
+Estos archivos y carpetas son internos a git y son los que va a usar para llevar la cuenta de las modificaciones que vamos realizando, por lo que no los vamos a modificar.
 
 Ahora podemos preguntarle a git cuál es el estado de los archivos a través del comando `git status`:
 
@@ -202,7 +202,7 @@ Archivos sin seguimiento:
 no hay nada agregado al commit pero hay archivos sin seguimiento presentes (usa "git add" para hacerles seguimiento)
 ```
 
-Lo que nos esta diciendo git es que:
+Lo que nos está diciendo git es que:
  1. Existen 2 archivos de texto (nuestras presentaciones) pero que no están bajo el control de git (es decir, que git los desconoce)
  2. Que podemos usar el comando `git add` para empezar a trackearlos
 
@@ -213,7 +213,7 @@ clinux01@pc1:~/Escritorio$ git add presentacion.txt
 clinux01@pc1:~/Escritorio$
 ```
 
-Vemos que el comando no genera ningun mensaje por pantalla. Asi que la forma de confirmar que hubo algun cambio es volver a pedirle el status:
+Vemos que el comando no genera ningun mensaje por pantalla. Así que la forma de confirmar que hubo algun cambio es volver a pedirle el status:
 
 ```
 clinux01@pc1:~/Escritorio$ git status
@@ -230,7 +230,7 @@ Archivos sin seguimiento:
 	presentacion_v1.txt
 ```
 
-Esto nos confirma que presentacion.txt esta ahora bajo el radar de git, pero sin embargo necesitamos confirmarle a git que realmente queremos que lo siga. Esta confirmación (commitment) lo hacemos a través del comando `git commit`:
+Esto nos confirma que `presentacion.txt` esta ahora bajo el radar de git, pero sin embargo necesitamos confirmarle a git que realmente queremos que lo siga. Esta confirmación (commitment) lo hacemos a través del comando `git commit`:
 
 ```
 clinux01@pc1:~/Escritorio$ git commit -m "version inicial de la presentacion"
@@ -262,7 +262,6 @@ Como las máquinas de los laboratorios son compartidas vamos a realizar la confi
 ```
 clinux01@pc1:~/Escritorio$ git config user.email [direccion de mail]
 clinux01@pc1:~/Escritorio$ git config user.name [Nombre y Apellido entre comillas]
-
 ```
 
 NOTA: podemos ver la configuracion de git ejecutando `git config --list`.
@@ -300,7 +299,7 @@ Date:   Mon May 1 13:52:14 2023 -0300
     version inicial de la presentacion
 ```
 
-NOTA: podemos ver que nuestro commit tiene un valor hexadecimal asociado que es el resultado de aplicar una funcion de hash sobre nuestros cambios. Cada vez que hacemos un commit, git calcula un nuevo hash y lo asocia al commit. Esto le permite identificar de manera unívoca a cada uno de los commits que vamos haciendo.
+NOTA: podemos ver que nuestro commit tiene un valor hexadecimal asociado que es el resultado de aplicar una función de hash sobre nuestros cambios. Cada vez que hacemos un commit, git calcula un nuevo hash y lo asocia al commit. Esto le permite identificar de manera unívoca a cada uno de los commits que vamos haciendo.
 
 Ahora podemos seguir trabajando en nuestra presentación y seguirle sumando cambios. Por ejemplo, podemos agregar un tema 5 y eliminar el tema 1:
 
@@ -311,7 +310,7 @@ Esta es mi presentacion. La presentacion tiene estos temas:
 * tema 5
 ```
 
-Dado que presentacion.txt está bajo la gestión de git, entonces podemos preguntarle cuáles son las diferencias con la versión que git conoce. Para esto usamos el comando `git diff`:
+Dado que `presentacion.txt`` está bajo la gestión de git, entonces podemos preguntarle cuáles son las diferencias con la versión que git conoce. Para esto usamos el comando `git diff`:
 
 ```
 clinux01@pc1:~/Escritorio$ git diff presentacion.txt
@@ -329,8 +328,8 @@ index 7f110c6..c13e96b 100644
 
 La salida es parecida a la que vimos cuando ejecutabamos `diff` a mano, pero es un poco más detallada:
 
- * nos dice que hay una linea que fue eliminada (-)
- * nos dice que hay una linea que fue agregada (+)
+ * nos dice que hay una línea que fue eliminada (-)
+ * nos dice que hay una línea que fue agregada (+)
  * nos dice que los cambios estan entre las lineas 1 y 4 del archivo
 
 Es decir, que además de darnos las diferencias, nos muestra un poco más de contexto para que nos resulte más fácil entenderlas.
@@ -344,7 +343,7 @@ clinux01@pc1:~/Escritorio$ git commit -m "agregue tema. saque tema"
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
-Nuevamente, en la última linea del mensaje, git nos esta resumiendo los cambios que detectó desde la última vez que le mandamos el archivo (1 inserción, 1 borrado).
+Nuevamente, en la última línea del mensaje, git nos está resumiendo los cambios que detectó desde la última vez que le mandamos el archivo (1 inserción, 1 borrado).
 
 Si pedimos la historia del archivo vamos a ver los 2 cambios/versiones, ordenados de más reciente a menos reciente:
 
@@ -363,7 +362,7 @@ Date:   Mon May 1 13:52:14 2023 -0300
     version inicial de la presentacion
 ```
 
-De esta forma evitamos tener que ir recordando los cambios que vamos haciendo, ya que git lo hace por nosotros. También nos permite volver a versiones anteriores y muchas cosas más. Pero antes de verlas, vamos a ver un poco más en detalle por qué el proceso de cambios se hace en 2 etapas.
+De está forma evitamos tener que ir recordando los cambios que vamos haciendo, ya que git lo hace por nosotros. También nos permite volver a versiones anteriores y muchas cosas más. Pero antes de verlas, vamos a ver un poco más en detalle por qué el proceso de cambios se hace en 2 etapas.
 
 ## stages
 
@@ -386,7 +385,7 @@ Para evitar ese problema (y otros) git usa un tercer "mundo" que es un intermedi
 
 Es por esta razón que cada vez que hacemos un add, tenemos que hacer un commit si queremos que nuestro cambio sea tomado efectivamente por git.
 
-NOTA: podria darse el caso de que hayamos agregado algun archivo por error. Esto es muy comun si hicimos `git add .` o `git add presentacion*` porque en esos casos git va a interepretar que queremos incorporar un grupo de archivos. Entonces podría ser que se haya agregado algun archivo por error. En estos casos, la salida de `git status` nos dice como solucionarlo:
+NOTA: podría darse el caso de que hayamos agregado algun archivo por error. Esto es muy común si hicimos `git add .` o `git add presentacion*` porque en esos casos git va a interepretar que queremos incorporar un grupo de archivos. Entonces podría ser que se haya agregado algun archivo por error. En estos casos, la salida de `git status` nos dice como solucionarlo:
 
 ```
 clinux01@pc1:~/Escritorio$ ls -l presen*
@@ -449,7 +448,7 @@ La idea es usar este proyecto es entender mejor cómo funciona un flujo de traba
 
 Lo primero es que cada uno de los integrantes del proyecto obtenga una copia del repositorio. Esto se puede hacer de varias maneras, pero nosotros lo vamos a hacer a traves de un `fork` para evitar pisarnos con otros alumnos haciendo las mismas pruebas.
 
-Entonces lo primero que vamos a hacer es clickear en el boton `fork`:
+Entonces lo primero que vamos a hacer es clickear en el botón `fork`:
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git1.png?raw=true)
 
@@ -461,9 +460,9 @@ Una vez logueados, confirmamos el nombre que va a tener nuestro fork, y finalmen
 
 Ahora vemos una copia (fork) del repositorio original. Esta copia es el repositorio que vamos a usar como proyecto.
 
-Entonces cada uno de los integrantes del grupo debe clonar usando `git clone`. Para esto podemos clickear en el boton que dice `code` y copiar la URL que figura ahí. Como siempre, abrimos una terminal en nuestra computadora y hacemos `git clone`.
+Entonces cada uno de los integrantes del grupo debe clonar usando `git clone`. Para esto podemos clickear en el botón que dice `code` y copiar la URL que figura ahí. Como siempre, abrimos una terminal en nuestra computadora y hacemos `git clone`.
 
-NOTA: antes de poder clonar, vamos a generar un token: https://github.com/settings/tokens. Esto lo vamos a hacer para simplificar nuestros ejemplos. En la vida real seria más prolijo configurar una clave SSH para interactuar con el repositorio remoto.
+NOTA: antes de poder clonar, vamos a generar un token: https://github.com/settings/tokens. Esto lo vamos a hacer para simplificar nuestros ejemplos. En la vida real sería más prolijo configurar una clave SSH para interactuar con el repositorio remoto.
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git4.png?raw=true)
 
@@ -475,7 +474,7 @@ NOTA: también es muy importante que al finalizar nuestro trabajo en las máquin
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git6.png?raw=true)
 
-Ahora si, usando nuestro nombre de usuario y nuestro token, vamos a clonar el repositorio:
+Ahora sí, usando nuestro nombre de usuario y nuestro token, vamos a clonar el repositorio:
 
 ```
 clinux01@pc1:$ git clone https://miNombreDeUsuario:miToken@github.com/miNombreDeUsuario/tallerDeGit
@@ -505,11 +504,12 @@ clinux01@pc1:~/Escritorio/tallerDeGit$
 
 En este momento podemos usar los comandos que vimos anteriormente. Por ejemplo, podemos ejecutar `git log` para ver los cambios que se hicieron hasta el momento en el repositorio original.
 
+NOTA: la salida de `git log` puede ser larga, por lo que tiene incoporado un mecanismo que va mostrando las siguientes lineas a medida que vamos presionando ENTER. Para volver a tomar control de la terminal hay que apretar la tecla `q`.
 
 En este momento vamos a modificar uno de los archivos. Podemos agregar, borrar o cambiar el contenido existente. Por ejemplo, podemos modificar el archivo `README.md`.
 
-Como siempre, vamos a llevar el archivo al area de stage con `git add` y vamos a confirmar el cambio con `git commit -m [mensaje]`.
-La diferencia principal es que los cambios que tenemos commiteados solo estan por ahora en nuestra máquina. Para que el repositorio remoto se entere de que hicimos cambios se lo tenemos que notificar usando el comando `git push`:
+Como siempre, vamos a llevar el archivo al área de stage con `git add` y vamos a confirmar el cambio con `git commit -m [mensaje]`.
+La diferencia principal es que los cambios que tenemos commiteados solo están por ahora en nuestra máquina. Para que el repositorio remoto se entere de que hicimos cambios se lo tenemos que notificar usando el comando `git push`:
 
 ```
 clinux01@pc1:~/Escritorio/tallerDeGit$ git push
@@ -523,7 +523,7 @@ To https://github.com/miNombreDeUsuario/tallerDeGit
    c1dd4ca..721f61f  main -> main
 ```
 
-Ahora si, si vamos a la interfaz web del proyecto, vamos a ver que se registró el cambio que acabamos de confirmar.
+Ahora sí, si vamos a la interfaz web del proyecto, vveremos que se registró el cambio que acabamos de confirmar.
 
 El resto de las personas que trabajan con nosotros en el proyecto van a estar realizando cambios tambien en sus copias locales, y pusheandolas eventualmente al repositorio remoto. Para obtener esos cambios realizados por otros (si los hubiera) es que vamos a realizar `git pull`:
 
@@ -533,7 +533,7 @@ Already up to date.
 ```
 
 Básicamente lo que hace `git pull` es hacer un diff de nuestro repositorio local contra el remoto, y aplicar las diferencias (patches) en el orden correcto para que ambos queden sincronizados.
-La mayor parte del tiempo es probable que los cambios realizados por distintos colaboradores no se interfieran entre si. En esos casos alcanza con el flujo `pull -> add -> commit -> push`. Sin embargo, pueden darse situaciones donde se generen conflictos. Veamos como manejarnos en esos casos.
+La mayor parte del tiempo es probable que los cambios realizados por distintos colaboradores no se interfieran entre sí. En esos casos alcanza con el flujo `pull -> add -> commit -> push`. Sin embargo, pueden darse situaciones donde se generen conflictos. Veamos como manejarnos en esos casos.
 
 ### resolviendo conflictos
 
@@ -542,10 +542,10 @@ Supongamos el siguiente escenario:
  1. los usuarios U1 y U2 trabajan en el mismo proyecto
  2. el usuario U1 clona el repositorio remoto. el usuario U2 hace lo mismo al mismo tiempo. Es decir, que los repositorios locales de U1 y U2 comienzan sincronizados
  3. U1 modifica un archivo (README.md). commitea y pushea el cambio al repositorio remoto
- 4. U2 tambien modifica el mismo archivo, pero lo hace más lento que U1. Entonces cuando U2 hace commuit y push, git le avisa que su repositorio no esta al dia, por lo que debe hacer primero un `git pull`
+ 4. U2 tambien modifica el mismo archivo, pero lo hace despues que U1. Entonces cuando U2 hace commit y push, git le avisa que su repositorio no está al día, por lo que debe hacer primero un `git pull`
  5. U2 hace un `git pull` pero dado que hay una nueva versión del README.md en el repositorio remoto, git intenta fusionar (mergear) ambas copias en el repositorio local de U2. Pueden darse 2 escenarios:
-    i. los cambios de U1 y U2 son compatibles. por ejemplo: U1 cambio la linea 1 y U2 la linea 2 del README.md. En este caso git aplica ambos cambios y U2 termina con una versión que incluye tanto sus cambios como los del repositorio remoto. En este caso puede subir la versión final haciendo `git add` y `git push`
-   ii. los cambios de U1 y U2 son conflictivos. Por ejemplo: ambos U1 y U2 modificaron la misma linea de maneras diferentes. En este punto git no puede resolver automáticamente el conflicto y le pide a U2 que lo resuelva manualmente. Una vez que U2 decide que hacer (si dejar su cambio o tomar el de U1) confirma el cambio y hace push
+    i. los cambios de U1 y U2 son compatibles. por ejemplo: U1 cambio la línea 1 y U2 la línea 2 del README.md. En este caso git aplica ambos cambios y U2 termina con una versión que incluye tanto sus cambios como los del repositorio remoto. En este caso puede subir la versión final haciendo `git add` y `git push`
+   ii. los cambios de U1 y U2 son conflictivos. Por ejemplo: ambos U1 y U2 modificaron la misma línea de maneras diferentes. En este punto git no puede resolver automáticamente el conflicto y le pide a U2 que lo resuelva manualmente. Una vez que U2 decide que hacer (si dejar su cambio o tomar el de U1) confirma el cambio y hace push
 
 Es decir, git va a intentar aplicar todos los cambios posibles siempre que no sean conflictivos. Y si hay conflicto le va a pedir al usuario que lo resuelva.
 
@@ -593,13 +593,13 @@ cd repo1
 cd tallerDeGit
 git status
 git add README.md
-git commit -m "hice un cambio en la primer linea"
+git commit -m "hice un cambio en la primer línea"
 git push
 ```
 
 El push funciona correctamente.
 
-Hacemos ahora una modificación en el README.md del repo2 y guardamos el archivo teniendo en cuenta modificar la misma linea pero con diferente contenido. E intentamos pushear con los mismos comandos:
+Hacemos ahora una modificación en el README.md del repo2 y guardamos el archivo teniendo en cuenta modificar la misma línea pero con diferente contenido. E intentamos pushear con los mismos comandos:
 
 
 ```
@@ -609,7 +609,7 @@ cd repo2
 cd tallerDeGit
 git status
 git add README.md
-git commit -m "hice otro cambio en la primer linea"
+git commit -m "hice otro cambio en la primer línea"
 git push
 ```
 
@@ -685,11 +685,11 @@ Chau!
 
 En este punto tenemos que decidir cuál de los dos cambios dejamos. No hay una regla general sobre cómo hacerlo y muchas veces probablemente tenga sentido comunicarnos con el usuario que hizo el otro cambio para ponernos de acuerdo en cuál es la mejor version.
 
-Y ahora si podemos pushear
+Y ahora sí podemos pushear
 
 ```
 git add README.md
-git commit -m "hice otro cambio en la primer linea"
+git commit -m "hice otro cambio en la primer línea"
 git push
 ```
 
@@ -707,22 +707,22 @@ Para sincronizar repo2 podemos hacer `git pull`:
 git pull
 ```
 
-y ahora si ambas carpetas estan sincronizadas con el repositorio remoto.
+y ahora sí ambas carpetas están sincronizadas con el repositorio remoto.
 
 ## antes de finalizar
 
 Dado que estamos usando computadoras compartidas, vamos a dejar el ambiente ordenado y listo para que otra persona pueda realizar las mismas pruebas que hicimos nosotros. Para esto vamos a:
 
 1. eliminar los archivos `presentacion.txt` y `presentacion_v1.txt` que hayamos creado en el Escritorio del usuario `clinux01`
-1. eliminar las copias de nuestros repositorios locales y tokens cacheados
-1. eliminar la carpeta `.git` que quedo en el Escritorio: `rm -rf ~/Desktop/.git`
+1. eliminar la carpeta `.git` que quedo en el Escritorio: `rm -rf ~/Escritorio/.git`
+1. eliminar las copias de nuestros repositorios locales: `rm -rf ~/Escritorio/repo1 && rm -rf ~/Escritorio/repo2`
 1. eliminar el historial de la terminal: `history -c && history -w`
 
-En el caso en que nos interese seguir trabajando solo tenemos que continuar usando nuestro repositorio remoto con el token correspondiente.
+En el caso en que nos interese seguir trabajando sólo tenemos que continuar usando nuestro repositorio remoto con el token correspondiente.
 
-Si bien en los ejemplos que vimos usamos la versión de linea de comando, existen aplicaciones con interfaz gráfica para simplificar la experiencia de uso. Ahora que tienen conocimientos básicos de cómo utilizar git, van a poder entender fácilmente cuáles son los comandos que se están ejecutando por detras.
+Si bien en los ejemplos que vimos usamos la versión de línea de comando, existen aplicaciones con interfaz gráfica para simplificar la experiencia de uso. Ahora que tienen conocimientos básicos de cómo utilizar git, van a poder entender fácilmente cuáles son los comandos que se están ejecutando por detras.
 
-Recuerden que todos los comandos de git tienen una ayuda en linea a la que pueden acceder ejecutando el comando con el agregado de la opcion `-h` o usando el comando `help`. Por ejemplo: `git add -h` da la versión de ayuda corta y `git help add` la versión larga.
+Recuerden que todos los comandos de git tienen una ayuda en línea a la que pueden acceder ejecutando el comando con el agregado de la opcion `-h` o usando el comando `help`. Por ejemplo: `git add -h` da la versión de ayuda corta y `git help add` la versión larga.
 
 Por ultimo, hay mucho material disponible en la red sobre git, sus comandos y las múltiples formas de usarlo. Estan más que invitados a seguir explorando git por su cuenta :)
 
