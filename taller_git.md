@@ -466,6 +466,8 @@ NOTA: antes de poder clonar, vamos a generar un token: https://github.com/settin
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git4.png?raw=true)
 
+Seleccionar la opción para generar un token "classic", y asegurarse luego de tildar la opción "repo".
+
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git5.png?raw=true)
 
 NOTA: es MUY importante anotar el token en algun lugar seguro (idealmente un password manager) ya que github nos lo va a mostrar 1 sola vez. Si nos olvidamos el token vamos a tener que generar uno nuevo.
@@ -474,10 +476,10 @@ NOTA: también es muy importante que al finalizar nuestro trabajo en las máquin
 
 ![](https://github.com/introprog-dc/tallerDeGit/blob/main/images/git6.png?raw=true)
 
-Ahora sí, usando nuestro nombre de usuario y nuestro token, vamos a clonar el repositorio:
+Ahora sí, usando nuestro nombre de usuario vamos a clonar el repositorio. Como el repositorio es público, git no nos va a pedir el token para clonar, pero sí para pushear en el repo (lo haremos más adelante).
 
 ```
-clinux01@pc1:$ git clone https://miNombreDeUsuario:miToken@github.com/miNombreDeUsuario/tallerDeGit
+clinux01@pc1:$ git clone https://github.com/miNombreDeUsuario/tallerDeGit
 Cloning into 'tallerDeGit'...
 remote: Enumerating objects: 9, done.
 remote: Counting objects: 100% (9/9), done.
@@ -509,10 +511,12 @@ NOTA: la salida de `git log` puede ser larga, por lo que tiene incoporado un mec
 En este momento vamos a modificar uno de los archivos. Podemos agregar, borrar o cambiar el contenido existente. Por ejemplo, podemos modificar el archivo `README.md`.
 
 Como siempre, vamos a llevar el archivo al área de stage con `git add` y vamos a confirmar el cambio con `git commit -m [mensaje]`.
-La diferencia principal es que los cambios que tenemos commiteados solo están por ahora en nuestra máquina. Para que el repositorio remoto se entere de que hicimos cambios se lo tenemos que notificar usando el comando `git push`:
+La diferencia principal es que los cambios que tenemos commiteados solo están por ahora en nuestra máquina. Para que el repositorio remoto se entere de que hicimos cambios se lo tenemos que notificar usando el comando `git push`. Escribimos nuestro nombre de usuario de github y luego el token como la contraseña.
 
 ```
 clinux01@pc1:~/Escritorio/tallerDeGit$ git push
+Username for 'https://github.com': miNombreDeUsuario
+Password for 'https://miNombreDeUsuario@github.com': <token>
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
 Delta compression using up to 8 threads
@@ -555,11 +559,11 @@ Probemos resolver un conflicto. Para esto vamos a simular que somos 2 usuarios d
 cd Escritorio
 mkdir repo1
 cd repo1
-git clone https://miNombreDeUsuario:miToken@github.com/miNombreDeUsuario/tallerDeGit
+git clone https://github.com/miNombreDeUsuario/tallerDeGit
 cd ..
 mkdir repo2
 cd repo2
-git clone https://miNombreDeUsuario:miToken@github.com/miNombreDeUsuario/tallerDeGit
+git clone https://github.com/miNombreDeUsuario/tallerDeGit
 cd..
 ```
 
