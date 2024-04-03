@@ -88,7 +88,7 @@ total 64
 En este momento podemos utilizar el comando `diff` para ver las diferencias entre las 2 versiones de nuestra presentación:
 
 ```
-clinux01@pc1:~/Escritorio$ diff presentacion.txt  presentacion_v1.txt
+clinux01@pc1:~/Escritorio$ diff presentacion.txt presentacion_v1.txt
 4d3
 < * tema 3
 ```
